@@ -1,0 +1,52 @@
+---
+# Deployment - student-teacherapi
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-student-teacherapi
+  namespace: cdp-apps
+  labels:
+    org: cdp
+    app: student-teacherapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      org: cdp
+      app: student-teacherapi
+  template:
+    metadata:
+      labels:
+        org: cdp
+        app: student-teacherapi
+    spec:
+      imagePullSecrets:
+      - name: github-docker-key
+      containers:
+      - name: cdp-student-teacherapi
+        image: <IMAGE>
+        env:
+          - name: SUPPRESS_NO_CONFIG_WARNING
+            value: "true"
+          - name: NODE_ENV
+            value: "production"
+          - name: DEBUG
+            value: "true"
+          - name: PORT
+            value: "8008"
+          - name: DB_HOST
+            value: "sl-aus-syd-1-portal.5xxxxx"
+          - name: DB_PORT
+            value: "22xxx"
+          - name: DB_USER
+            value: "admin"
+          - name: DB_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: student-teacher-env
+                key: DB_PASSWORD
+          - name: CA_CERT
+            valueFrom:
+              configMapKeyRef:
+                name: student-teacher-env
+                key: CA_CERT

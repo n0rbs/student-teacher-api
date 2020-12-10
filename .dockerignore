@@ -1,0 +1,7 @@
+test
+coverage
+node_modules
+.env
+.eslintignore
+.eslintr.yaml
+jest.config.js

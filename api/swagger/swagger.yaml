@@ -1,0 +1,154 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: School Management
+host: localhost:8001
+basePath: /api
+schemes:
+  # Remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /commonstudents:
+    get:
+      description: Retrieve a list of students common to a given list of teachers
+      operationId: listCommonStudents
+      parameters:
+        - $ref: "#/parameters/teacher"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/ListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /register:
+    post:
+      description: Register one or more students to a specified teacher
+      operationId: registerStudents
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/RegisterData'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GenericResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /suspend:
+    post:
+      description: Register one or more students to a specified teacher
+      operationId: suspendStudent
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/SuspendData'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GenericResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /retrievefornotifications:
+    post:
+      description: Retrieve a list of students who can receive a given notification
+      operationId: retrieveForNotification
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/RetrieveData'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GenericResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  ListResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+      list:
+        type: object
+  GenericResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  PostData:
+    title: Post data
+    type: object
+    properties:
+      id:
+        type: string
+        description: id
+  RetrieveData:
+    title: Post retrieve data
+    type: object
+    properties:
+      teacher:
+        type: string
+        description: email
+      notification:
+        type: string
+        description: notification data
+  SuspendData:
+    title: Post suspend data
+    type: object
+    properties:
+      email:
+        type: string
+        description: email
+  RegisterData:
+    title: Post student register data
+    type: object
+    properties:
+      teacher:
+        type: string
+        description: Teacher email
+      sutdents:
+        type: array
+        items:
+          type: string
+          description: List of student emails
+parameters:
+  teacher:
+    in: query
+    name: teacher
+    description: format of schedule
+    type: array
+    items:
+      type: string

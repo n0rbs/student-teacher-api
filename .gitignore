@@ -1,0 +1,9 @@
+node_modules
+.env
+.eslintignore
+coverage
+norbs.js
+.DS_Store
+.nyc_output/
+DB
+jest-test/

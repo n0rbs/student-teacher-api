@@ -1,0 +1,18 @@
+---
+# Service - API
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    org: cdp
+    app: student-teacherapi
+  name: student-teacher-api
+  namespace: cdp-apps
+spec:
+  ports:
+  - port: 8008
+    protocol: TCP
+  selector:
+    org: cdp
+    app: student-teacherapi
+  sessionAffinity: None

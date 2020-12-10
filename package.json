@@ -1,0 +1,65 @@
+{
+  "name": "student-teacher-api",
+  "version": "1.0.1",
+  "description": "School management system",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "test": "NODE_ENV=development nyc mocha",
+    "test-wc": "NODE_ENV=production nyc --reporter=html mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/n0rbs/student-teacher-api.git"
+  },
+  "keywords": [
+    "student",
+    "api",
+    "teacher",
+    "management"
+  ],
+  "author": "Norbert Aluba Dela Pena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n0rbs/student-teacher-api/issues"
+  },
+  "homepage": "https://github.com/n0rbs/student-teacher-api#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "color-logs": "^0.6.1",
+    "config": "^3.3.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "mysql": "github:mysqljs/mysql",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
+    "swagger-routes-express": "^3.2.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "babel-eslint": "^10.1.0",
+    "babel-polyfill": "^6.26.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "faker": "^5.1.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.1"
+  }
+}

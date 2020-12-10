@@ -1,0 +1,15 @@
+{
+  "db": {
+    "useSSL": true,
+    "mysql": {
+      "host": "sl-aus-syd-1-portal.5.dblayer.com",
+      "user": "admin",
+      "database": "school",
+      "port": 22241,
+      "waitForConnections": true,
+      "connectionLimit": 10,
+      "queueLimit": 0,
+      "isServer": false
+    }
+  }
+}

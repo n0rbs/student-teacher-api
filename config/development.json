@@ -1,0 +1,15 @@
+{
+  "db": {
+    "useSSL": false,
+    "mysql": {
+      "host": "localhost",
+      "user": "root",
+      "database": "school",
+      "port": 3306,
+      "waitForConnections": true,
+      "connectionLimit": 10,
+      "queueLimit": 0,
+      "isServer": false
+    }
+  }
+}
